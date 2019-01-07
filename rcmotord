@@ -1,0 +1,32 @@
+#!/bin/bash
+# /etc/init.d/rcmotord
+
+### BEGIN INIT INFO
+# Provides:          rcmotord
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: motor controller via bluetooth 8bitdo SNES controller
+# Description:       motor controller via bluetooth 8bitdo SNES controller
+### END INIT INFO
+
+
+case "$1" in 
+    start)
+        #@TODO consider creating an in-memory circular buffer for logging
+        echo "Starting rcmotord"
+        cd /home/pi/src
+        sudo /usr/local/bin/forever start -a -l /dev/null -o /dev/null -e /dev/null -c bash ./start-rc.bash
+        ;;
+    stop)
+        echo "Stopping rcmotord"
+        sudo /usr/local/bin/forever stopall
+        ;;
+    *)
+        echo "Usage: /etc/init.d/rcmotord start|stop"
+        exit 1
+        ;;
+esac
+
+exit 0
