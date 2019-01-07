@@ -17,8 +17,7 @@ PCA96855 I2C pwm to drive the HS422 servo
 
 A board with the following configuration
 
-<!-- language: lang-none -->
-
+<pre>
   ---------------------------------
   |                               |
   |        == G  P  I  O  S  ==   |
@@ -29,6 +28,7 @@ A board with the following configuration
   |                               |
   |      #1  #2   #3  #4          |
   ---------------------------------
+</pre>
 
 With the following IO mapping:
 
